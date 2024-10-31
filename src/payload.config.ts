@@ -101,7 +101,7 @@ export default buildConfig({
 		},
 	}),
 	email: resendAdapter({
-		defaultFromAddress: "mailer@s3interdev.com",
+		defaultFromAddress: "hello@s3.co.ke",
 		defaultFromName: "Mailer @ S3",
 		apiKey: resendAPIKey,
 	}),

@@ -1,7 +1,7 @@
 {
-	"name": "payload-starter-template",
+	"name": "superior-software-solutions-website-project",
 	"version": "0.3.4",
-	"description": "A blank template to get started with Payload 3.0",
+	"description": "Superior Software Solutions website project",
 	"license": "MIT",
 	"type": "module",
 	"scripts": {
