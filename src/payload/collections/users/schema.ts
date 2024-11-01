@@ -11,7 +11,7 @@ export const Users: CollectionConfig = {
 		plural: "Users",
 	},
 	admin: {
-		defaultColumns: ["firstName", "lastName", "email", "createdAt"],
+		defaultColumns: ["firstName", "lastName", "email", "createdAt", "updatedAt"],
 		useAsTitle: "fullName",
 	},
 	access: {

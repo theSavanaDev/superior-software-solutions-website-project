@@ -18,8 +18,8 @@ import sharp from "sharp";
 import { fileURLToPath } from "url";
 
 import { Categories } from "@/payload/collections/categories/schema";
-import { Media } from "@/payload/collections/media";
-import { Users } from "@/payload/collections/users";
+import { Media } from "@/payload/collections/media/schema";
+import { Users } from "@/payload/collections/users/schema";
 
 import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 

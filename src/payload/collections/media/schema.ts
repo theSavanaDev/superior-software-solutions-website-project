@@ -12,7 +12,7 @@ export const Media: CollectionConfig = {
 		plural: "Media",
 	},
 	admin: {
-		defaultColumns: ["filename", "mimeType", "alt", "caption"],
+		defaultColumns: ["filename", "mimeType", "alt", "caption", "createdAt", "updatedAt"],
 	},
 	access: {
 		create: authenticated,
