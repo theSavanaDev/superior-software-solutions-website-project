@@ -68,7 +68,7 @@ export default buildConfig({
 		},
 		user: Users.slug,
 	},
-	collections: [Media, Categories, Users],
+	collections: [Categories, Media, Users],
 	db: mongooseAdapter({ url: databaseURI }),
 	editor: lexicalEditor({
 		features: () => {
