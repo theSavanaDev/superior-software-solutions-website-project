@@ -25,6 +25,7 @@ import { Posts } from "@/payload/collections/posts/schema";
 import { Services } from "@/payload/collections/services/schema";
 
 import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
+import { Page, Post, Service } from "@/payload-types";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -34,13 +35,13 @@ const resendAPIKey = process.env.RESEND_API_KEY!;
 const uploadthingSecret = process.env.UPLOADTHING_SECRET!;
 const publicURL = process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_SERVER_URL_DEV! : process.env.NEXT_PUBLIC_SERVER_URL_PRD!;
 
-// const generateTitle: GenerateTitle<Page | Post> = ({ doc }) => {
-// 	return doc?.title ? `${doc.title} | Payload Starter` : "Payload Starter";
-// };
+const generateTitle: GenerateTitle<Page | Post | Service> = ({ doc }) => {
+	return doc?.title ? `${doc.title} | Superior Software Solutions` : "Superior Software Solutions";
+};
 
-// const generateURL: GenerateURL<Page | Post> = ({ doc }) => {
-// 	return doc?.slug ? `${publicURL}/${doc.slug}` : publicURL;
-// };
+const generateURL: GenerateURL<Page | Post | Service> = ({ doc }) => {
+	return doc?.slug ? `${publicURL}/${doc.slug}` : publicURL;
+};
 
 export default buildConfig({
 	admin: {
@@ -76,11 +77,10 @@ export default buildConfig({
 	editor: lexicalEditor({
 		features: () => {
 			return [
-				UnderlineFeature(),
 				BoldFeature(),
 				ItalicFeature(),
 				LinkFeature({
-					enabledCollections: [],
+					enabledCollections: ["pages", "posts", "services"],
 					fields: ({ defaultFields }) => {
 						const defaultFieldsWithoutUrl = defaultFields.filter((field) => {
 							if ("name" in field && field.name === "url") return false;
@@ -101,6 +101,7 @@ export default buildConfig({
 						];
 					},
 				}),
+				UnderlineFeature(),
 			];
 		},
 	}),
@@ -133,9 +134,7 @@ export default buildConfig({
 				},
 			},
 		}),
-		seoPlugin({
-			/* generateTitle, generateURL */
-		}),
+		seoPlugin({ generateTitle, generateURL }),
 		uploadthingStorage({
 			collections: {
 				[Media.slug]: true,
