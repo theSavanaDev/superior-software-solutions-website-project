@@ -7,6 +7,9 @@ import { slugField } from "@/payload/fields/slug/schema";
 import { authenticated } from "@/payload/access/authenticated";
 import { authenticatedOrPublished } from "@/payload/access/authenticated-or-published";
 
+import { populateAuthors } from "@/payload/collections/posts/hooks/populate-authors";
+import { revalidatePost } from "@/payload/collections/posts/hooks/revalidate-post";
+
 import type { CollectionConfig } from "payload";
 
 const publicURL = process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_SERVER_URL_DEV! : process.env.NEXT_PUBLIC_SERVER_URL_PRD!;
@@ -89,6 +92,10 @@ export const Posts: CollectionConfig = {
 		},
 		...slugField(),
 	],
+	hooks: {
+		afterRead: [populateAuthors],
+		afterChange: [revalidatePost],
+	},
 	versions: {
 		drafts: {
 			autosave: {

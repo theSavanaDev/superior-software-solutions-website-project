@@ -7,6 +7,8 @@ import { slugField } from "@/payload/fields/slug/schema";
 import { authenticated } from "@/payload/access/authenticated";
 import { authenticatedOrPublished } from "@/payload/access/authenticated-or-published";
 
+import { revalidateService } from "@/payload/collections/services/hooks/revalidate-service";
+
 import type { CollectionConfig } from "payload";
 
 const publicURL = process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_SERVER_URL_DEV! : process.env.NEXT_PUBLIC_SERVER_URL_PRD!;
@@ -89,6 +91,9 @@ export const Services: CollectionConfig = {
 		},
 		...slugField(),
 	],
+	hooks: {
+		afterChange: [revalidateService],
+	},
 	versions: {
 		drafts: {
 			autosave: {

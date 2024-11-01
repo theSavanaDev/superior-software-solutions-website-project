@@ -7,6 +7,9 @@ import { slugField } from "@/payload/fields/slug/schema";
 import { authenticated } from "@/payload/access/authenticated";
 import { authenticatedOrPublished } from "@/payload/access/authenticated-or-published";
 
+import { populatePublishedAt } from "@/payload/collections/pages/hooks/populate-published-at";
+import { revalidatePage } from "@/payload/collections/pages/hooks/revalidate-page";
+
 import type { CollectionConfig } from "payload";
 
 const publicURL = process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_SERVER_URL_DEV! : process.env.NEXT_PUBLIC_SERVER_URL_PRD!;
@@ -96,6 +99,10 @@ export const Pages: CollectionConfig = {
 			},
 		},
 	],
+	hooks: {
+		beforeChange: [populatePublishedAt],
+		afterChange: [revalidatePage],
+	},
 	versions: {
 		drafts: {
 			autosave: {
