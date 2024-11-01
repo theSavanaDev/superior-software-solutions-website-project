@@ -5,7 +5,7 @@ import { authenticated } from "@/payload/access/authenticated";
 
 import type { CollectionConfig } from "payload";
 
-const Media: CollectionConfig = {
+export const Media: CollectionConfig = {
 	slug: "media",
 	labels: {
 		singular: "Media",
@@ -41,5 +41,3 @@ const Media: CollectionConfig = {
 		resizeOptions: { width: 1024 },
 	},
 };
-
-export default Media;

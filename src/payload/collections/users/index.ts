@@ -4,7 +4,7 @@ import populateFullName from "@/payload/collections/users/hooks/populate-full-na
 
 import type { CollectionConfig } from "payload";
 
-const Users: CollectionConfig = {
+export const Users: CollectionConfig = {
 	slug: "users",
 	labels: {
 		singular: "User",
@@ -51,6 +51,7 @@ const Users: CollectionConfig = {
 			label: "Full Name",
 			type: "text",
 			admin: {
+				hidden: true,
 				position: "sidebar",
 				readOnly: true,
 			},
@@ -60,5 +61,3 @@ const Users: CollectionConfig = {
 		},
 	],
 };
-
-export default Users;
