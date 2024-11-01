@@ -22,6 +22,7 @@ import { Media } from "@/payload/collections/media/schema";
 import { Users } from "@/payload/collections/users/schema";
 import { Pages } from "@/payload/collections/pages/schema";
 import { Posts } from "@/payload/collections/posts/schema";
+import { Services } from "@/payload/collections/services/schema";
 
 import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 
@@ -70,7 +71,7 @@ export default buildConfig({
 		},
 		user: Users.slug,
 	},
-	collections: [Pages, Posts, Categories, Media, Users],
+	collections: [Pages, Posts, Services, Categories, Media, Users],
 	db: mongooseAdapter({ url: databaseURI }),
 	editor: lexicalEditor({
 		features: () => {
