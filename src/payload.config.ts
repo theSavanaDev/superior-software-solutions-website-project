@@ -24,6 +24,9 @@ import { Pages } from "@/payload/collections/pages/schema";
 import { Posts } from "@/payload/collections/posts/schema";
 import { Services } from "@/payload/collections/services/schema";
 
+import { Header } from "@/payload/blocks/globals/header/schema";
+import { Footer } from "@/payload/blocks/globals/footer/schema";
+
 import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 import { Page, Post, Service } from "@/payload-types";
 
@@ -110,7 +113,7 @@ export default buildConfig({
 		defaultFromName: "Mailer @ S3",
 		apiKey: resendAPIKey,
 	}),
-	globals: [],
+	globals: [Header, Footer],
 	plugins: [
 		formBuilderPlugin({
 			fields: {
